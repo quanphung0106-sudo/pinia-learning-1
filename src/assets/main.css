@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;800&family=VT323&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;800&family=VT323&display=swap");
 
 body {
   background: #f2f2f2;
@@ -41,12 +41,13 @@ header h1 {
   background: #fff;
   margin-top: 20px;
   border-radius: 4px;
-  box-shadow: 2px 4px 6px rgba(0,0,0,0.05);
+  box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.05);
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-.task h3, .task .icons {
+.task h3,
+.task .icons {
   display: inline-block;
 }
 .task .icons {
@@ -57,6 +58,9 @@ header h1 {
   margin-left: 6px;
   cursor: pointer;
   color: #bbb;
+}
+.task i.active {
+  color: #ff005d;
 }
 
 /* filter nav */
@@ -75,4 +79,37 @@ header h1 {
   cursor: pointer;
   font-size: 0.8em;
   font-size: 1em;
+}
+
+/* new task form */
+.new-task-form {
+  background: #e7e7e7;
+  padding: 20px 0;
+}
+form {
+  max-width: 400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  gap: 10px;
+}
+form button {
+  background: #ffd859;
+  border: 0;
+  padding: 10px;
+  font-family: "Poppins";
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1em;
+}
+form input {
+  border: 0;
+  padding: 10px;
+  border-radius: 6px;
+  color: #555;
+  font-size: 1em;
+}
+
+.active {
+  fill: red;
 }

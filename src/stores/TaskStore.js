@@ -13,7 +13,6 @@ export const useTaskStore = defineStore("taskStore", {
     },
     favCount() {
       return this.tasks.reduce((task, current) => {
-        console.log(task, current);
         if (current.isFav === true) {
           return (task += 1);
         } else {
@@ -23,6 +22,20 @@ export const useTaskStore = defineStore("taskStore", {
     },
     totalCount() {
       return this.tasks.length;
+    },
+  },
+  actions: {
+    addTask(task) {
+      console.log(task);
+      this.tasks.push(task);
+    },
+    deleteTask(id) {
+      this.tasks = this.tasks.filter((task) => task.id !== id);
+    },
+    toggleFav(id) {
+      const arr = this.tasks.find((task) => task.id === id);
+      arr.isFav = !arr.isFav;
+      console.log(arr.isFav);
     },
   },
 });
