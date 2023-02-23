@@ -14,14 +14,18 @@
       <TaskForm />
     </div>
 
+    <!-- loading -->
+    <div class="loading" v-if="taskStore.isLoading === true">
+      Loading...
+    </div>
     <!-- task list -->
-    <div v-if="filter === true" class="task-list">
+    <div v-if="filter === true && taskStore.isLoading === false" class="task-list">
       <p>You have: {{ taskStore.totalCount }} tasks</p>
       <div v-for="task in taskStore.tasks">
         <TaskDetails :task="task" :id="task.id" />
       </div>
     </div>
-    <div v-if="filter === false" class="task-list">
+    <div v-if="filter === false && taskStore.isLoading === false" class="task-list">
       <p>You have: {{ taskStore.favCount }} fav tasks</p>
       <div v-for="task in taskStore.favs">
         <TaskDetails :task="task" :id="task.id" />
@@ -39,6 +43,9 @@ export default {
   components: { TaskDetails, TaskForm },
   setup() {
     const taskStore = useTaskStore()
+
+    //fetch Data
+    taskStore.getTasks()
 
     const filter = ref(true)
 
