@@ -1,18 +1,18 @@
 {
   "tasks": [
     {
-      "id": 1,
-      "title": "buy some milk",
-      "isFav": false
-    },
-    {
       "id": 9314,
       "title": "Hello freind",
-      "isFav": false
+      "isFav": true
     },
     {
       "id": 9719,
       "title": "asdasdsa",
+      "isFav": true
+    },
+    {
+      "id": 6794,
+      "title": "ASDASDSDSA",
       "isFav": true
     }
   ]
