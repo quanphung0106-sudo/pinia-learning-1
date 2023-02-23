@@ -32,17 +32,46 @@ export const useTaskStore = defineStore("taskStore", {
         this.isLoading = false;
       }
     },
-    addTask(task) {
-      console.log(task);
+    async addTask(task) {
       this.tasks.push(task);
+
+      const res = await fetch("http://localhost:3000/tasks", {
+        method: "POST",
+        body: JSON.stringify(task),
+        headers: { "Content-Type": "application/json" },
+      });
+
+      if (res.error) {
+        console.log("error", res.error);
+      }
     },
-    deleteTask(id) {
-      this.tasks = this.tasks.filter((task) => task.id !== id);
+    async deleteTask(id) {
+      this.tasks.filter((task) => task.id !== id);
+
+      const res = await fetch("http://localhost:3000/tasks/" + id, {
+        method: "DELETE",
+        headers: { "Content-Type": "application/json" },
+      });
+
+      if (res.status === 200) this.getTasks();
+
+      if (res.error) {
+        console.log("error", res.error);
+      }
     },
-    toggleFav(id) {
+    async toggleFav(id) {
       const arr = this.tasks.find((task) => task.id === id);
       arr.isFav = !arr.isFav;
-      console.log(arr.isFav);
+
+      const res = await fetch("http://localhost:3000/tasks/" + id, {
+        method: "PATCH",
+        body: JSON.stringify({ isFav: arr.isFav }),
+        headers: { "Content-Type": "application/json" },
+      });
+
+      if (res.error) {
+        console.log("error", res.error);
+      }
     },
   },
 });
